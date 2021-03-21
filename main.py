@@ -26,6 +26,7 @@ async def help(ctx):
   embed = discord.Embed(title = "Hi! My name is Kaylee!")
   embed.add_field(name = "Kawaii...", value = "``ka!kawaii_random <text>``")
   embed.set_footer(text = "Kaylee is the kawaii bot made by JDJG Inc. Official#3493 and Shadi#0879") 
+  await ctx.send(embed=embed)
 
 B.b()
 bot.run(os.environ["TOKEN"])
