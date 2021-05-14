@@ -1,8 +1,5 @@
-import ClientConfig
-import discord
-import B
-import os
-import asyncio
+import ClientConfig, B
+import discord, os, asyncio
 
 bot = ClientConfig.bot
 
@@ -21,15 +18,11 @@ async def on_ready():
   print(f"Id: {bot.user.id}")
   await status_task()
 
-#@bot.command()
-#async def help(ctx):
-  #embed = discord.Embed(title = "Hi! My name is Kaylee!")
-  #embed.add_field(name = "Kawaii...", value = "``ka!kawaii_random <text>``")
-  #embed.set_footer(text = "Kaylee is the kawaii bot made by JDJG Inc. Official#3493 and Shadi#0879") 
-  #await ctx.send(embed=embed)
-
-#Let's trap this in a comment, I don't know if that will really work...
-
+@bot.command()
+async def help2(ctx):
+  embed = discord.Embed(title = "Hi! My name is Kaylee!")
+  embed.add_field(name = "Kawaii...", value = "``ka!kawaii_random <text>``")
+  embed.set_footer(text = "Kaylee is the kawaii bot made by JDJG Inc. Official#3493 and Shadi#0879") 
 
 B.b()
 bot.run(os.environ["TOKEN"])
