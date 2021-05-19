@@ -13,20 +13,16 @@ class Info(commands.Cog):
       guild=self.client.get_guild(int(match.group(0)))
       if guild is None:
         guild = ctx.guild
-
     if args is None:
       guild = ctx.guild
-
     if guild is None:
       await ctx.send("Guild wanted has not been found")
-    
     await guildinfo(ctx,guild)
     
   @commands.command(aliases=["user info", "user_info","user-info","whois"],brief="a command that gives information on users",help="this can work with mentions, ids, usernames, and even full names.")
   async def userinfo(self,ctx,*,user: BetterUserconverter = None):
     user = user or ctx.author
     user_type = user_type = ['User', 'Bot'][user.bot]
-    
     if ctx.guild:
       member_version=ctx.guild.get_member(user.id)
       if member_version:
@@ -58,7 +54,6 @@ class Info(commands.Cog):
     guilds_list=[guild for guild in self.client.guilds if guild.get_member(user.id) and guild.get_member(ctx.author.id)]
     if not guilds_list:
       guild_list = "None"
-
     x = 0
     for g in guilds_list:
       if x < 1:
@@ -66,7 +61,6 @@ class Info(commands.Cog):
       if x > 0:
         guild_list = guild_list + f", {g.name}"
       x = x + 1
-
     embed=discord.Embed(title=f"{user}",description=f"Type: {user_type}", color=random.randint(0, 16777215),timestamp=ctx.message.created_at)
     embed.add_field(name="Username: ", value = user.name)
     embed.add_field(name="Discriminator:",value=user.discriminator)
