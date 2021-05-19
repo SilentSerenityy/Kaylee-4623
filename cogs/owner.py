@@ -6,7 +6,7 @@ class Owner(commands.Cog):
   def __init__(self, bot):
     self.client = bot
     self.bot = bot
-
+    
   async def cog_command_error(self,ctx,error):
     if ctx.command and ctx.command.has_error_handler():
       pass
@@ -26,10 +26,8 @@ class Owner(commands.Cog):
   async def addsus(self,ctx,*,user:BetterUserconverter=None):
     if user is None:
       await ctx.send("can't have a user be none.")
-    
     def check(m):
       return m.author.id == ctx.author.id
-
     if user:
       await ctx.reply("Please give me a reason why:")
       reason = await self.client.wait_for("message",check=check)
@@ -43,7 +41,6 @@ class Owner(commands.Cog):
   async def removesus(self,ctx,*,user:BetterUserconverter=None):
     if user is None:
       await ctx.send("You can't have a none user.")
-
     if user:
       cur = await self.client.sus_users.cursor()
       await cur.execute("DELETE FROM sus_users WHERE user_id = ?", (user.id,))
@@ -77,4 +74,3 @@ class Owner(commands.Cog):
 
 def setup(client):
   client.add_cog(Owner(client))
- 
