@@ -3,7 +3,6 @@ from discord.ext import commands
 import random
 import random
 import asyncio
-import aiohttp
 
 class emote(commands.Cog):
   def __init__(self, client):
@@ -19,7 +18,6 @@ class emote(commands.Cog):
     emoji_choosen = random.choice(kawaii_emotes.emojis+kawaii_emotes2.emojis+kawaii_emotes3.emojis)
     await ctx.channel.purge(limit=amount)
     await ctx.send(f"{message} {emoji_choosen}")
-
 
 def setup(client):
     client.add_cog(emote(client))
