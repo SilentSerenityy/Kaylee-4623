@@ -7,6 +7,7 @@ class Moderation(commands.Cog):
 
   @commands.command(help="a command to scan for malicious bots, specificially ones that only give you random invites and are fake(work in progress)")
   async def scan_guild(self,ctx):
+    
     if isinstance(ctx.channel, discord.TextChannel):
       cur = await self.client.sus_users.cursor()
       sus_users=dict([n for n in await cur.execute("SELECT * FROM SUS_USERS;")])
@@ -17,8 +18,10 @@ class Moderation(commands.Cog):
         if user:
           count = count + 1
           await ctx.send(f"Found {x}. \nUsername: {user.name} \nReason: {sus_users[x]}")
+          
       if count < 1:
         await ctx.send("No Bad users found.")
+        
     if isinstance(ctx.channel,discord.DMChannel):
       await ctx.send("please use the global version")
 
