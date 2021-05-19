@@ -6,7 +6,6 @@ import datetime
 class listen(commands.Cog):
   def __init__(self,bot):
     self.bot = bot
-
   @commands.Cog.listener()
   async def on_message(self,message):
     punc = [' ','.','!','?']
@@ -29,7 +28,6 @@ class listen(commands.Cog):
 
       if (cake_check):
         await message.channel.send("UwU <:BlueberryCake:777631186365054986> is so tasty x3")
-
 
 def setup(bot):
   bot.add_cog(listen(bot))
